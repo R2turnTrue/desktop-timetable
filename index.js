@@ -15,18 +15,7 @@ setInterval(() => {
 }, 60000)
 
 autoUpdater.on('update-downloaded', (event, releaseNotes, releaseName) => {
-  const dialogOpts = {
-    type: 'info',
-    buttons: ['설치하기', '나중에..'],
-    title: '업데이트',
-    message: process.platform === 'win32' ? releaseNotes : releaseName,
-    detail:
-      '새로운 버전이 다운로드되었어요!'
-  }
-
-  dialog.showMessageBox(dialogOpts).then((returnValue) => {
-    if (returnValue.response === 0) autoUpdater.quitAndInstall()
-  })
+  autoUpdater.quitAndInstall()
 })
 
 autoUpdater.on('error', (message) => {
