@@ -1,6 +1,8 @@
 {
   "name": "desktop-timetable",
-  "version": "1.0.0",
+  "version": "0.0.2",
+  "author": "R2turnTrue",
+  "description": "Desktop Timetable",
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
@@ -13,7 +15,7 @@
     "@electron-forge/plugin-fuses": "^7.4.0",
     "@electron/fuses": "^1.8.0",
     "electron": "^30.0.8",
-    "koffi": "^2.8.9"
+    "electron-squirrel-startup": "^1.0.1"
   },
   "scripts": {
     "start": "electron-forge start",
@@ -21,6 +23,6 @@
     "make": "electron-forge make"
   },
   "dependencies": {
-    "electron-squirrel-startup": "^1.0.1"
+    "koffi": "^2.8.9"
   }
 }

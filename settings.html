@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>설정</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+
+        body {
+            font-family: "Noto Sans KR", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-style: normal;
+
+            background-color: #242424;
+            color: white;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            margin: 15px;
+        }
+
+        .slidecontainer {
+        width: 100%;
+        }
+
+        .slider {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 15px;
+            border-radius: 5px;
+            background: #ffffff;
+            outline: none;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #19b6ff;
+            cursor: pointer;
+        }
+    </style>
+
+    <script>
+
+        function changeOpacity(e) {
+            const slider = document.getElementById('opacity')
+
+            console.log(slider.value)
+
+            setOpacity(parseInt(slider.value))
+        }
+
+        function changeStartup(e) {
+            const startup = document.getElementById('startup')
+
+            console.log(startup.checked)
+
+            setStartup(startup.checked)
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1 style="margin-bottom: 10px;">설정</h1>
+        <p style="margin-bottom: 3px;">창 투명도:</p>
+        <input type="range" min="50" max="255" value="210" class="slider" id="opacity" oninput="changeOpacity()">
+
+        <p style="margin-bottom: 3px;">시작 프로그램으로:</p>
+        <input type="checkbox" checked class="checkbox" id="startup" oninput="changeStartup()">
+    </div>
+
+    <script>
+        (async () => {
+            const opacitySlider = document.getElementById('opacity')
+            opacitySlider.value = await getOpacity()
+
+            const startupBox = document.getElementById('startup')
+            startupBox.checked = await getStartup()
+        })()
+    </script>
+</body>
+</html>

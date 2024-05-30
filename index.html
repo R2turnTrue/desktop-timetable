@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comsigan</title>
+    <script src="https://kit.fontawesome.com/98c3e15d9a.js" crossorigin="anonymous"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+
+        .full {
+            display: block;
+            border: none;
+            height: 100%;
+            width: 100%;
+            top: 0px;
+            left: 4px;
+            position: absolute;
+            pointer-events: none;
+
+            font-family: "Noto Sans KR", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        @keyframes notif_appear {
+            from {top: -50px;}
+            to {top: 10px;}
+        }
+
+        @keyframes notif_disappear {
+            from {top: 10px;}
+            to {top: -50px;}
+        }
+
+        #app {
+            -webkit-user-select: none; /* Safari */
+            -ms-user-select: none; /* IE 10 and IE 11 */
+            user-select: none; /* Standard syntax */
+        }
+
+        .notif {
+            pointer-events: all;
+            background-color: #202020;
+            color: white;
+            border: none;
+            margin-top: 0px;
+            border-radius: 30px;
+            padding: 7px;
+
+            width: 60%;
+
+            top: -50px;
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            position: absolute;
+        }
+
+        .notif_appear {
+            animation-name: notif_appear;
+            animation-duration: 0.5s;
+            animation-fill-mode: forwards;
+            animation-timing-function: ease-out;
+        }
+
+        .notif_disappear {
+            animation-name: notif_disappear;
+            animation-duration: 0.5s;
+            animation-fill-mode: forwards;
+            animation-timing-function: ease-out;
+        }
+
+        button {
+            pointer-events: all;
+            background-color: #202020;
+            color: white;
+            border: none;
+            margin-top: 0px;
+            border-radius: 0px 0px 30px 30px;
+            padding: 7px;
+        }
+    </style>
+
+    <script>
+        const NOTIF_DEFAULT_ICON = '<i class="fa-solid fa-check fa-1x" style="margin-left: 20px;"></i>&nbsp;'
+        
+        function clickSettings() {
+            openSettings()
+        }
+
+        function refresh() {
+            const app = document.getElementById('app')
+            const timetable = document.getElementById('timetable')
+
+            createNotification(NOTIF_DEFAULT_ICON + '시간표를 새로고침했어요!')
+
+            const cloned = timetable.cloneNode(true)
+
+            timetable.remove()
+
+            document.body.insertBefore(cloned, app)
+
+        }
+
+        function createNotification(content) {
+            const app = document.getElementById('app')
+
+            const notifDiv = document.createElement('div')
+            notifDiv.innerHTML = content
+            notifDiv.classList.add('notif', 'notif_appear')
+
+            app.appendChild(notifDiv)
+
+            setTimeout(() => {
+                notifDiv.classList.remove('notif_appear')
+                notifDiv.classList.add('notif_disappear')
+            }, 1500)
+        }
+    </script>
+</head>
+<body>
+    <iframe id="timetable" src="http://xn--s39aj90b0nb2xw6xh.kr/" width="400" height="600" style="position: absolute; left: 0px; right: 0px; border: none;"></iframe>
+    <div class="full" id="app">
+        <!--
+        <div class="notif notif_appear">
+            <i class="fa-solid fa-check fa-1x" style="margin-left: 20px;"></i>
+            시간표를 새로 고치는 중...
+        </div>
+        -->
+
+        <div>
+            <button onclick="clickSettings()">
+                <i class="fa-solid fa-gear fa-2x"></i>
+            </button>
+
+            <button onclick="refresh()">
+                <i class="fa-solid fa-rotate-right fa-2x"></i>
+            </button>
+        </div>
+    </div>
+</body>
+</html>
