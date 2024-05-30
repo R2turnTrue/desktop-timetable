@@ -6,7 +6,7 @@ const fs = require('fs')
 if (require('electron-squirrel-startup')) app.quit();
 
 const server = 'https://update.electronjs.org'
-const url = `${server}/update/${process.platform}/${app.getVersion()}`
+const url = `${server}/R2turnTrue/desktop-timetable/${process.platform}-${process.arch}/${app.getVersion()}`
 
 autoUpdater.setFeedURL({ url })
 
