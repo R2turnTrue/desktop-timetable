@@ -14,6 +14,19 @@ module.exports = {
       }
     },
   ],
+  publishers: [
+    {
+      name: '@electron-forge/publisher-github',
+      config: {
+        repository: {
+          owner: 'R2turnTrue',
+          name: 'desktop-timetable'
+        },
+        prerelease: false,
+        draft: true
+      },
+    }
+  ],
   plugins: [
     {
       name: '@electron-forge/plugin-auto-unpack-natives',

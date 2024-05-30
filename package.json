@@ -1,6 +1,6 @@
 {
   "name": "desktop-timetable",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "author": "R2turnTrue",
   "description": "Desktop Timetable",
   "main": "index.js",
@@ -13,16 +13,18 @@
     "@electron-forge/maker-zip": "^7.4.0",
     "@electron-forge/plugin-auto-unpack-natives": "^7.4.0",
     "@electron-forge/plugin-fuses": "^7.4.0",
+    "@electron-forge/publisher-github": "^7.4.0",
     "@electron/fuses": "^1.8.0",
     "electron": "^30.0.8"
   },
   "scripts": {
     "start": "electron-forge start",
     "package": "electron-forge package",
-    "make": "electron-forge make"
+    "make": "electron-forge make",
+    "publish": "electron-forge publish"
   },
   "dependencies": {
-    "koffi": "^2.8.9",
-    "electron-squirrel-startup": "^1.0.1"
+    "electron-squirrel-startup": "^1.0.1",
+    "koffi": "^2.8.9"
   }
 }
