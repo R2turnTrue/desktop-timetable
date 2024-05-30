@@ -78,6 +78,7 @@
 
         <p style="margin-bottom: 3px;">시작 프로그램으로:</p>
         <input type="checkbox" checked class="checkbox" id="startup" oninput="changeStartup()">
+        <p style="margin-bottom: 3px;" id="ver">버전 확인중...</p>
     </div>
 
     <script>
@@ -87,6 +88,9 @@
 
             const startupBox = document.getElementById('startup')
             startupBox.checked = await getStartup()
+
+            const ver = document.getElementById('ver')
+            ver.innerText = await getVersion()
         })()
     </script>
 </body>

@@ -108,6 +108,10 @@ const createWindow = async () => {
     return configurations.startup || true
   })
 
+  ipcMain.handle('getVersion', (e) => {
+    return app.getVersion()
+  })
+
   ipcMain.handle('setOpacity', (e, opacity) => {
     configurations.opacity = opacity
     SetLayeredWindowAttributes(hwnd, 0, opacity, 0x00000002)

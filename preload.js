@@ -20,3 +20,7 @@ contextBridge.exposeInMainWorld('getStartup', () => {
 contextBridge.exposeInMainWorld('getOpacity', () => {
     return ipcRenderer.invoke('getOpacity')
 })
+
+contextBridge.exposeInMainWorld('getVersion', () => {
+    return ipcRenderer.invoke('getVersion')
+})
